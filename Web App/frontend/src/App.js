@@ -1,7 +1,9 @@
+import Feeds from './components/Feeds/Feeds'
 function App() {
   return (
     <div className='App'>
-      <>Hello world</>
+      <Feeds />
+      {/* <>Hello world</> */}
     </div>
   )
 }
