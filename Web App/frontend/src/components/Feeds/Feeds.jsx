@@ -5,8 +5,8 @@ function Feeds() {
   const [location, setLocation] = useState('')
   const [search, setSearch] = useState('')
   const [jobData, setJobData] = useState([])
-  const country="in"
-  
+  const country = 'in'
+
   let API_KEY = '3d3b4f0df0ffe00a90506fed37c05aa6'
   let APP_ID = '36d1ac77'
   let BASE_URL = 'https://api.adzuna.com/v1/api/jobs'
@@ -17,10 +17,45 @@ function Feeds() {
   async function handleSubmit() {
     const data = await axios.get(targetURL)
     setJobData(data.data.results)
-    setSearch("")
-    setLocation("")
+    setSearch('')
+    setLocation('')
   }
 
+  const handleSortDateasc = () => {
+    let temp = [...jobData]
+    temp.sort(function (objA, objB) {
+      let yearA = objA.created.split('T')[0].split('-')[0]
+      let yearB = objB.created.split('T')[0].split('-')[0]
+
+      let monthA = objA.created.split('T')[0].split('-')[1]
+      let monthB = objB.created.split('T')[0].split('-')[1]
+
+      let daya = objA.created.split('T')[0].split('-')[2]
+      let dayb = objB.created.split('T')[0].split('-')[2]
+      let dateA = yearA + monthA + daya
+      let dateB = yearB + monthB + dayb
+      return parseInt(dateA) - parseInt(dateB)
+    })
+    setJobData(temp)
+  }
+
+  const handleSortDatedesc = () => {
+    let temp = [...jobData]
+    temp.sort(function (objA, objB) {
+      let yearA = objA.created.split('T')[0].split('-')[0]
+      let yearB = objB.created.split('T')[0].split('-')[0]
+
+      let monthA = objA.created.split('T')[0].split('-')[1]
+      let monthB = objB.created.split('T')[0].split('-')[1]
+
+      let daya = objA.created.split('T')[0].split('-')[2]
+      let dayb = objB.created.split('T')[0].split('-')[2]
+      let dateA = yearA + monthA + daya
+      let dateB = yearB + monthB + dayb
+      return parseInt(dateB) - parseInt(dateA)
+    })
+    setJobData(temp)
+  }
 
   return (
     <div>
@@ -36,9 +71,7 @@ function Feeds() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-
-{/* Will be adding the country when adding filters,commented and hardcoded as for now */}
-
+      {/* Will be adding the country when adding filters,commented and hardcoded as for now */}
       {/* <input
         placeholder='
       country'
@@ -46,8 +79,9 @@ function Feeds() {
         value={country}
         onChange={(e) => setCountry(e.target.value)}
       /> */}
-      <button onClick={handleSubmit}>submit</button>
-
+      <button onClick={handleSubmit}>submit</button>Sort by
+      <button onClick={handleSortDateasc}>date asc</button>
+      <button onClick={handleSortDatedesc}>by date des</button>
       <div>
         {jobData === [] ? (
           <></>
