@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router'
+import {signOut} from 'firebase/auth'
+import {auth} from '../../config/firebase'
 
 function Feeds() {
+  const history = useHistory()
   const [location, setLocation] = useState('')
   const [search, setSearch] = useState('')
   const [jobData, setJobData] = useState([])
@@ -24,6 +28,12 @@ function Feeds() {
 
   return (
     <div>
+      <button onClick={() => {
+        signOut(auth)
+        .then(() => {
+          history.push('/')
+        })
+      }}>Logout</button>
       <input
         placeholder='City'
         type='text'
