@@ -342,6 +342,190 @@ function ResumeBuilder() {
             />
           </div>
         </div>
+        <div class='resume_page'>
+          <div class='contact_info'>
+            <p
+              class='name'
+              style={{
+                fontSize: '30px',
+                fontWeight: '500',
+                fontFamily: 'sans-serif',
+              }}
+            >
+              <span>{first}</span>
+              <span>{last}</span>
+            </p>
+            <p class='address'>
+              <span>{add}</span>
+              <span>{city}</span>
+              {city !== '' && <span>India</span>}
+            </p>
+            <p class='links'>
+              <span>{phone}</span>
+              <span>{email}</span>
+              <span>
+                <a href={lnkdn}></a>
+                {lnkdn}
+              </span>
+              <span>
+                <a href={github}></a>
+                {github}
+              </span>
+            </p>
+          </div>
+          {college !== '' && (
+            <div class='section education_info'>
+              <p class='section_header'>Education</p>
+              <hr />
+              <div class='subsection_info'>
+                <div class='primary_row'>
+                  <p>{college}</p>
+                  <p>
+                    <span>{cstart}</span>
+                    <span>{cend} </span>
+                  </p>
+                </div>
+                <div class='secondary_row'>
+                  <span>
+                    {course} &nbsp; in &nbsp;{branch}{' '}
+                  </span>
+                  <span>{cgpa}</span>
+                </div>
+              </div>
+              <div class='subsection_info'>
+                <div class='primary_row'>
+                  <p>{school}</p>
+                  <p>
+                    <span>{send} </span>
+                  </p>
+                </div>
+                <div class='secondary_row'>
+                  <span> {board}</span>
+                  <span> {marks}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          {company !== '' && (
+            <div class='section experience_info'>
+              <p class='section_header'>Experience</p>
+              <hr />
+              <div class='primary_row'>
+                <p>{company}</p>
+                <p>
+                  <span>{jstart}</span>
+                  <span>{jend} </span>
+                </p>
+              </div>
+              <div class='secondary_row'>
+                <p>{desig}</p>
+                <p>{jdesc} </p>
+              </div>
+            </div>
+          )}
+          {ptitle1 !== '' && (
+            <div class='section projects_info'>
+              <p class='section_header'>Projects</p>
+              <hr />
+              <div class='primary_row'>
+                <p>
+                  {ptitle1} | <i>Link to work</i>
+                </p>
+                <p>
+                  <span>{ptech1}</span>
+                </p>
+              </div>
+              <div class='secondary_row'>
+                <p>{pdesc1} </p>
+              </div>
+              <br />
+              {ptitle2 !== '' && (
+                <div>
+                  {' '}
+                  <div class='primary_row'>
+                    <p>
+                      {ptitle2} | <i>Link to work</i>
+                    </p>
+                    <p>
+                      <span>{ptech2}</span>
+                    </p>
+                  </div>
+                  <div class='secondary_row'>
+                    <p>{pdesc2} </p>
+                  </div>
+                  <br />
+                </div>
+              )}{' '}
+              {ptitle3 !== '' && (
+                <div>
+                  <div class='primary_row'>
+                    <p>
+                      {ptitle3} | <i>Link to work</i>
+                    </p>
+                    <p>
+                      <span>{ptech3}</span>
+                    </p>
+                  </div>
+                  <div class='secondary_row'>
+                    <p>{pdesc3}</p>
+                  </div>
+                  <br />
+                </div>
+              )}
+              {ptitle4 !== '' && (
+                <div>
+                  <div class='primary_row'>
+                    <p>
+                      {ptitle4} | <i>Link to work</i>
+                    </p>
+                    <p>
+                      <span>{ptech4}</span>
+                    </p>
+                  </div>
+                  <div class='secondary_row'>
+                    <p>{pdesc4} </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}{' '}
+          {lang !== '' && (
+            <div class='section skills_info'>
+              <p class='section_header'>Technical Skills</p>
+              <hr />
+              {lang !== '' && (
+                <p>
+                  <b>Languages:</b>&nbsp;<span>{lang}</span>
+                </p>
+              )}
+              {tech !== '' && (
+                <p>
+                  <b>Technologies/Framworks:</b>&nbsp;
+                  <span>{tech}</span>
+                </p>
+              )}
+              {tools !== '' && (
+                <p>
+                  <b>Developer Tools:</b>&nbsp;<span>{tools}</span>
+                </p>
+              )}
+            </div>
+          )}
+          {achieve1 !== '' && (
+            <div class='section achievement_info'>
+              <p class='section_header'>Achievements</p>
+              <hr />
+              <div class='bulltets secondary_row'>
+                <ul>
+                  {achieve1 !== '' && <li>{achieve1}</li>}
+                  {achieve2 !== '' && <li>{achieve2} </li>}
+                  {achieve3 !== '' && <li>{achieve3}</li>}
+                  {achieve4 !== '' && <li>{achieve4}</li>}{' '}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   )
