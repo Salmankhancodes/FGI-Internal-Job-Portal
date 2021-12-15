@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.resume_wrapper {
+  margin-top: 2%;
+  /* margin-left: 5%;
+    margin-right: 5%; */
+  display: flex;
+  justify-content: space-around;
+  background-color: whitesmoke;
+}
+
+.resume_form {
+  width: 40%;
+  padding-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+.resume_page {
+  border: 1px solid black;
+  width: 40%;
+  /* border: 1px solid black; */
+  background-color: white;
+
+  padding: 2rem;
+  width: 795px;
+  min-height: 895px;
+  height: max-content;
+  margin-bottom: 5%;
+}
+
+.contact_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section_header {
+  font-weight: 700;
+  font-size: 17px;
+}
+.primary_row {
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+}
+.secondary_row {
+  font-size: 14px;
+  font-style: italic;
+  word-break: break-all;
+}
+.section {
+  margin-top: 1rem;
+}
+.bulltets {
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+}
+span {
+  margin-right: 0.6rem;
+}
+.download_button {
+  position: fixed;
+  width: 150px;
+  height: 50px;
+  right: 0.2rem;
+  bottom: 3rem;
+  border-radius: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 14px;
+  background-color: yellow;
+  border: 5px solid olivedrab;
+  font-weight: 600;
+}
+/* Here is a general solution,
+  using CSS only,
+  which I have verified to work. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .resume_page * {
+    visibility: visible;
+  }
+  .resume_page {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+/* .college_name {
+      display: flex;
+      justify-content: space-between;
+    } */
+/* .college_info {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .school_info {
+      display: flex;
+      justify-content: space-between;
+    } */
