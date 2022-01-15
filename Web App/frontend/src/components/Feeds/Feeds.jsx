@@ -11,7 +11,7 @@ function Feeds() {
   let APP_ID = '36d1ac77'
   let BASE_URL = 'https://api.adzuna.com/v1/api/jobs'
   let BASE_PARAMS =
-    'search/1?&results_per_page=20&content-type=application/json'
+    'search/1?&results_per_page=40&content-type=application/json'
   const targetURL = `${BASE_URL}/${country.toLowerCase()}/${BASE_PARAMS}&app_id=${APP_ID}&app_key=${API_KEY}&what=${search}&where=${location}`
 
   async function handleSubmit() {
