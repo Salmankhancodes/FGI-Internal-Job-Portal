@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './Feeds.css'
+import image from './EmptyFeeds.png'
+import logo from './logo.png'
+import loader from './loader.gif'
+import nodataimage from './nodata.png'
 
 function Feeds() {
   const [location, setLocation] = useState('')
   const [search, setSearch] = useState('')
-  const [jobData, setJobData] = useState([])
+  const [jobData, setJobData] = useState(null)
+  const [loading, setLoading] = useState(false)
+
   const country = 'in'
 
   let API_KEY = '3d3b4f0df0ffe00a90506fed37c05aa6'
@@ -15,10 +22,18 @@ function Feeds() {
   const targetURL = `${BASE_URL}/${country.toLowerCase()}/${BASE_PARAMS}&app_id=${APP_ID}&app_key=${API_KEY}&what=${search}&where=${location}`
 
   async function handleSubmit() {
+    setLoading(true)
+    setJobData([])
     const data = await axios.get(targetURL)
     setJobData(data.data.results)
     setSearch('')
     setLocation('')
+    setLoading(false)
+  }
+  const sortBy = (val) => {
+    if (val == 'asce') handleSortDateasc()
+    else if (val == 'desc') handleSortDatedesc()
+    else return
   }
 
   const handleSortDateasc = () => {
@@ -58,81 +73,138 @@ function Feeds() {
   }
 
   return (
-    <div>
-      <input
-        placeholder='City'
-        type='text'
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <input
-        placeholder='search'
-        type='text'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <div className='feeds'>
+      <div className='searchWrapper'>
+        <input
+          className='searchBarCity'
+          placeholder='City'
+          type='text'
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <input
+          className='searchBarTitle'
+          placeholder='search'
+          type='text'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button className='searchJobButton' onClick={handleSubmit}>
+          Find a Job
+        </button>
+      </div>
+
+      {/* <label htmlFor='sortdate'>Sort By:</label>
+        <select
+          name='sortdate'
+          id='sortdate'
+          // value={''}
+          onChange={(e) => sortBy(e.target.value)}
+        >
+          <option value=''>Sort By</option>
+          <option value='asce'>Least Recent</option>
+          <option value='desc'>Most Recent</option>
+        </select> */}
+
       {/* Will be adding the country when adding filters,commented and hardcoded as for now */}
       {/* <input
         placeholder='
-      country'
+        country'
         type='text'
         value={country}
         onChange={(e) => setCountry(e.target.value)}
       /> */}
-      <button onClick={handleSubmit}>submit</button>Sort by
+
+      {/* Sort by
       <button onClick={handleSortDateasc}>date asc</button>
-      <button onClick={handleSortDatedesc}>by date des</button>
-      <div>
-        {jobData === [] ? (
-          <></>
-        ) : (
-          jobData.map((eachJob) => {
-            return (
-              <div>
-                <hr />
-                <p>
-                  <b>Title:</b>
-                  {eachJob.title}
-                </p>
-                <p>
-                  <b>Company:</b>
-                  {eachJob.company.display_name}
-                </p>
-                <p>
+    <button onClick={handleSortDatedesc}>by date des</button> */}
+      {loading === true ? (
+        <div className='loader'>
+          <img src={loader} alt='' />
+          <h3>Loading please wait....</h3>
+        </div>
+      ) : (
+        <div className='jobsWrapper'>
+          {jobData === null ? (
+            <div className='homeFeeds'>
+              <div className='homeLeft'>
+                <img src={logo} alt='' />
+                <div className='homeHeading'>
+                  <h1>FGI-Internal Job Portal</h1>
+                  {/* <h3>Internal Job Portal</h3> */}
+                  <p>1️⃣Build Resume 2️⃣ Search Job 3️⃣ Apply</p>
+                  <div className='homeButtons'>
+                    <button className='homeButton' onClick={handleSubmit}>
+                      Search Jobs
+                    </button>
+                    <button className='homeButton'>Build Resume</button>
+                  </div>
+                </div>
+              </div>
+              <div className='homeRight'>
+                <img src={image} alt='' />
+              </div>
+            </div>
+          ) : jobData.length === 0 ? (
+            <div className='nodataPage'>
+              <img src={nodataimage} alt='' />
+              <h3>
+                Not Found, Try searching with different location or job title
+              </h3>
+            </div>
+          ) : (
+            jobData.map((eachJob) => {
+              return (
+                <div className='eachJob'>
+                  <p className='firstRow'>
+                    {/* <b>Title:</b> */}
+                    <span>{eachJob.title}</span>
+                    <span>
+                      <i className='fas fa-map-marker-alt'></i>
+                      {eachJob.location.area.map((element) => {
+                        return <span className='location'>&nbsp;{element}</span>
+                      })}
+                    </span>
+                  </p>
+                  <p className='secondRow'>
+                    <span>
+                      {/* <b>Company:</b> */}
+                      <i className='far fa-building'></i>
+
+                      {eachJob.company.display_name}
+                    </span>
+                    <span>
+                      <i className='fas fa-money-bill'></i>
+                      {eachJob.salary_min / 100000}-
+                      {eachJob.salary_max / 100000} LPA
+                    </span>
+                    <span>
+                      <i className='far fa-clock'></i>{' '}
+                      {eachJob.contract_time === undefined
+                        ? 'Not available'
+                        : eachJob.contract_time}
+                    </span>
+
+                    <span>
+                      <i className='far fa-calendar-alt'></i>
+                      {eachJob.created.split('T')[0]}
+                    </span>
+                  </p>
+                  {/* <p>
                   <b>Job description:</b>
                   {eachJob.description}
-                </p>
-                <p>
-                  <b>Job location:</b>
-                  {eachJob.location.area.map((element) => {
-                    return <span>&nbsp;{element}</span>
-                  })}
-                </p>
-                <p>
-                  <b>Salary:</b>
-                  {eachJob.salary_min / 100000}-{eachJob.salary_max / 100000}{' '}
-                  LPA
-                </p>
-                <p>
-                  <b>Job type:</b>
-                  &nbsp;
-                  {eachJob.contract_time === undefined
-                    ? 'Not available'
-                    : eachJob.contract_time}
-                </p>
-                <p>
-                  <b>Posted On:</b>
-                  &nbsp;{eachJob.created.split('T')[0]}
-                </p>
-
-                <a href={eachJob.redirect_url}>Apply</a>
-
-                <hr />
-              </div>
-            )
-          })
-        )}
-      </div>
+                </p> */}
+                  <p className='thirdRow'>
+                    <a href={eachJob.redirect_url}>
+                      <button className='applyButton'>Apply</button>
+                    </a>
+                  </p>
+                </div>
+              )
+            })
+          )}
+        </div>
+      )}
     </div>
   )
 }
