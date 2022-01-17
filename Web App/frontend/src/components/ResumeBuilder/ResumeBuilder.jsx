@@ -114,6 +114,9 @@ function ResumeBuilder() {
       </button> */}
       <div class='resume_wrapper'>
         <div className='resume_form'>
+          <div className='header'>
+            <h4>{sectionName[page]}-Info</h4>
+          </div>
           <div className='progressbar_container'>
             <div
               style={{
@@ -135,10 +138,6 @@ function ResumeBuilder() {
               &nbsp;
             </div>
           </div>
-          <div className='header'>
-            <h4>{sectionName[page]}-Info</h4>
-          </div>
-          <div className='formbody'>{displayComponent()}</div>
           <div className='footer'>
             <button disabled={page === 0} onClick={() => setPage(page - 1)}>
               prev
@@ -159,6 +158,7 @@ function ResumeBuilder() {
               </button>
             )}
           </div>
+          <div className='formbody'>{displayComponent()}</div>
         </div>
 
         <div class='resume_page'>
