@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import './Feeds.css'
-import image from './EmptyFeeds.png'
-import logo from './logo.png'
+// import image from './EmptyFeeds.png'
+// import logo from './logo.png'
 import loader from './loader.gif'
 import nodataimage from './nodata.png'
 
@@ -88,24 +88,28 @@ function Feeds() {
           type='text'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
+        />{' '}
+        {jobData === null ? (
+          ''
+        ) : (
+          <select
+            name='sortdate'
+            id='sortdate'
+            // value={''}
+            onChange={(e) => sortBy(e.target.value)}
+          >
+            {console.log(jobData)}
+            <option value=''>Sort By</option>
+            <option value='asce'>Least Recent</option>
+            <option value='desc'>Most Recent</option>
+          </select>
+        )}
         <button className='searchJobButton' onClick={handleSubmit}>
           Find a Job
         </button>
       </div>
-
-      {/* <label htmlFor='sortdate'>Sort By:</label>
-        <select
-          name='sortdate'
-          id='sortdate'
-          // value={''}
-          onChange={(e) => sortBy(e.target.value)}
-        >
-          <option value=''>Sort By</option>
-          <option value='asce'>Least Recent</option>
-          <option value='desc'>Most Recent</option>
-        </select> */}
-
+      {/* <label htmlFor='sortdate'>Sort By:</label> */}
+      {/* //{' '} */}
       {/* Will be adding the country when adding filters,commented and hardcoded as for now */}
       {/* <input
         placeholder='
@@ -114,7 +118,6 @@ function Feeds() {
         value={country}
         onChange={(e) => setCountry(e.target.value)}
       /> */}
-
       {/* Sort by
       <button onClick={handleSortDateasc}>date asc</button>
     <button onClick={handleSortDatedesc}>by date des</button> */}
@@ -126,28 +129,16 @@ function Feeds() {
       ) : (
         <div className='jobsWrapper'>
           {jobData === null ? (
-            <div className='homeFeeds'>
-              <div className='homeLeft'>
-                <img src={logo} alt='' />
-                <div className='homeHeading'>
-                  <h1>FGI-Internal Job Portal</h1>
-                  {/* <h3>Internal Job Portal</h3> */}
-                  <p>1️⃣Build Resume 2️⃣ Search Job 3️⃣ Apply</p>
-                  <div className='homeButtons'>
-                    <button className='homeButton' onClick={handleSubmit}>
-                      Search Jobs
-                    </button>
-                    <button className='homeButton'>Build Resume</button>
-                  </div>
-                </div>
-              </div>
-              <div className='homeRight'>
-                <img src={image} alt='' />
-              </div>
+            <div className='emptyFeeds'>
+              <h1>Start Searching...</h1>
+              <h5>
+                Somewhere someone is looking for exactly what you want to offer
+              </h5>
             </div>
           ) : jobData.length === 0 ? (
             <div className='nodataPage'>
               <img src={nodataimage} alt='' />
+
               <h3>
                 Not Found, Try searching with different location or job title
               </h3>
