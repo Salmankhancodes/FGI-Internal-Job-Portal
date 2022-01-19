@@ -2,7 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import logo from './logo.png'
-function Navbar() {
+import { signOut } from 'firebase/auth'
+import { auth } from '../../config/firebase'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react/cjs/react.development'
+
+function Navbar({ user }) {
+  const [opt, setOpt] = useState(false)
+  const navigate = useNavigate()
+  const userNav = () => {
+    setOpt(!opt)
+  }
   return (
     <nav>
       <div className='navbar'>
@@ -23,9 +33,54 @@ function Navbar() {
           <Link to='/resumebuilder'>
             <button>Build Resume</button>
           </Link>
-          <Link to='/resumebuilder'>
-            <button>About</button>
-          </Link>
+          {user ? (
+            <p className='userNav'>
+              <i
+                onClick={(e) => {
+                  userNav()
+                }}
+                class='fas fa-user-circle'
+              ></i>
+              {opt === false ? (
+                ''
+              ) : (
+                <>
+                  {' '}
+                  <div className='userOption'>
+                    <Link to='/profile'>
+                      <p>
+                        <i class='fas fa-user'></i>Profile
+                      </p>
+                    </Link>
+                    <hr />
+                    <Link to='/'>
+                      <p
+                        onClick={() =>
+                          signOut(auth).then(() => {
+                            setOpt(false)
+                            navigate('/login')
+                          })
+                        }
+                      >
+                        {' '}
+                        <i class='fas fa-sign-out-alt'></i>
+                        Logout
+                      </p>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </p>
+          ) : (
+            <>
+              <Link to='/login'>
+                <button>Login</button>
+              </Link>{' '}
+              <Link to='/signup'>
+                <button>Sign Up</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

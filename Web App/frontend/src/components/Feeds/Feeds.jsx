@@ -5,8 +5,10 @@ import './Feeds.css'
 // import logo from './logo.png'
 import loader from './loader.gif'
 import nodataimage from './nodata.png'
+import { useNavigate } from 'react-router-dom'
 
 function Feeds() {
+  const navigate = useNavigate()
   const [location, setLocation] = useState('')
   const [search, setSearch] = useState('')
   const [jobData, setJobData] = useState(null)
@@ -62,7 +64,6 @@ function Feeds() {
 
       let monthA = objA.created.split('T')[0].split('-')[1]
       let monthB = objB.created.split('T')[0].split('-')[1]
-
       let daya = objA.created.split('T')[0].split('-')[2]
       let dayb = objB.created.split('T')[0].split('-')[2]
       let dateA = yearA + monthA + daya
@@ -75,6 +76,16 @@ function Feeds() {
   return (
     <div className='feeds'>
       <div className='searchWrapper'>
+        {/* <button
+          onClick={() => {
+            signOut(auth).then(() => {
+              navigate('/login')
+            })
+          }}
+        >
+          Logout
+        </button> */}
+        {/* <h1> {auth.currentUser.email} </h1> */}
         <input
           className='searchBarCity'
           placeholder='City'

@@ -13,7 +13,7 @@
 }
 
 .navLeft {
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 40%;
+  width: 50%;
 }
 
 .navRight button {
@@ -32,7 +32,7 @@
   background-color: #15b81c;
   border-radius: 10px;
   border: none;
-  font-size: 19px;
+  font-size: 18px;
   color: white;
 }
 
@@ -46,4 +46,32 @@
 .navLogo {
   margin-left: 3rem;
   width: 4.2rem;
+}
+
+.fa-user-circle {
+  position: absolute;
+  top: 1rem;
+  color: white;
+  /* margin-top: 1rem; */
+  font-size: 35px;
+  /* margin-left: 1rem; */
+  /* margin-bottom: 1rem; */
+}
+.userOption {
+  position: absolute;
+  top: 4rem;
+  right: 0.5rem;
+  font-size: 18px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 7rem;
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userOption p {
+  color: black;
+  padding: 0.2rem;
 }

@@ -1,0 +1,13 @@
+.profileWrapper {
+  height: 100vh;
+  background-color: #e4e8f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(116, 113, 113);
+}
+.underdevImage {
+  width: 30rem;
+  height: 30rem;
+}

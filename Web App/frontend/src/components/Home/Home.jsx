@@ -3,11 +3,13 @@ import './Home.css'
 import image from './EmptyFeeds.png'
 import logo from './logo.png'
 import { useNavigate } from 'react-router-dom'
+
 function Home() {
   const navigate = useNavigate()
   return (
     <div className='homeFeeds'>
       <div className='homeLeft'>
+        {/* <h3>Hi 👋 {auth.currentUser.email}</h3> */}
         <img src={logo} alt='' />
         <div className='homeHeading'>
           <h1>FGI-Internal Job Portal</h1>
