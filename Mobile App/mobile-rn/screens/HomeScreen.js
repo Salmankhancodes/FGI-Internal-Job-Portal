@@ -1,30 +1,48 @@
-import { signOut } from '@firebase/auth'
-import { useNavigation } from '@react-navigation/core'
-import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
-import { auth } from '../firebase'
+import { useNavigation } from "@react-navigation/core";
+import React from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  AntDesign,
+  Entypo,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import FeedsScreen from "./FeedsScreen";
+import ProfileScreen from "./ProfileScreen";
 
 const HomeScreen = () => {
-    const navigation = useNavigation()
+  const navigation = useNavigation();
 
-    const logout = () => {
-        signOut(auth)
-        .then(() => {
-            navigation.navigate('Welcome')
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
+  const Tab = createBottomTabNavigator();
 
-    return (
-        <View>
-            <Text>Email Verified</Text>
-            <Button title="Logout" onPress={logout} />
-        </View>
-    )
-}
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveBackgroundColor: "#adff2f",
+        tabBarInactiveBackgroundColor: "white",
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: "black",
+      }}
+    >
+      <Tab.Screen
+        name="Feeds"
+        component={FeedsScreen}
+        options={{
+          tabBarIcon: () => <FontAwesome name="feed" size={24} color="black" />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: () => <FontAwesome name="user" size={24} color="black" />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
