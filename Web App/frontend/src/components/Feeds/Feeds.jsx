@@ -33,8 +33,8 @@ function Feeds() {
     setLoading(false)
   }
   const sortBy = (val) => {
-    if (val == 'asce') handleSortDateasc()
-    else if (val == 'desc') handleSortDatedesc()
+    if (val === 'asce') handleSortDateasc()
+    else if (val === 'desc') handleSortDatedesc()
     else return
   }
 

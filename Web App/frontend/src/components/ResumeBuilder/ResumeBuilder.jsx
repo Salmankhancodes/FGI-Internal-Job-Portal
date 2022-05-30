@@ -109,10 +109,7 @@ function ResumeBuilder() {
 
   return (
     <>
-      {/* <button className='download_button' onClick={() => handleDownload()}>
-        Download Resume
-      </button> */}
-      <div class='resume_wrapper'>
+      <div className='resume_wrapper'>
         <div className='resume_form'>
           <div className='header'>
             <h4>{sectionName[page]}-Info</h4>
@@ -161,10 +158,10 @@ function ResumeBuilder() {
           <div className='formbody'>{displayComponent()}</div>
         </div>
 
-        <div class='resume_page'>
-          <div class='contact_info'>
+        <div className='resume_page'>
+          <div className='contact_info'>
             <p
-              class='name'
+              className='name'
               style={{
                 fontSize: '30px',
                 fontWeight: '500',
@@ -174,12 +171,12 @@ function ResumeBuilder() {
               <span>{formData.first}</span>
               <span>{formData.last}</span>
             </p>
-            <p class='address'>
+            <p className='address'>
               <span>{formData.add}</span>
               <span>{formData.city}</span>
               {formData.city !== '' && <span>India</span>}
             </p>
-            <p class='links' style={{ fontSize: '12px' }}>
+            <p className='links' style={{ fontSize: '12px' }}>
               <span>{formData.phone}</span>
               <span>{formData.email}</span>
 
@@ -196,32 +193,32 @@ function ResumeBuilder() {
             </p>
           </div>
           {formData.college !== '' && (
-            <div class='section education_info'>
-              <p class='section_header'>Education</p>
+            <div className='section education_info'>
+              <p className='section_header'>Education</p>
               <hr />
-              <div class='subsection_info'>
-                <div class='primary_row'>
+              <div className='subsection_info'>
+                <div className='primary_row'>
                   <p>{formData.college}</p>
                   <p>
                     <span>{formData.cstart}</span>
                     <span>{formData.cend} </span>
                   </p>
                 </div>
-                <div class='secondary_row'>
+                <div className='secondary_row'>
                   <span>
                     {formData.course} &nbsp; in &nbsp;{formData.branch}{' '}
                   </span>
                   <span>{formData.cgpa}</span>
                 </div>
               </div>
-              <div class='subsection_info'>
-                <div class='primary_row'>
+              <div className='subsection_info'>
+                <div className='primary_row'>
                   <p>{formData.school}</p>
                   <p>
                     <span>{formData.send} </span>
                   </p>
                 </div>
-                <div class='secondary_row'>
+                <div className='secondary_row'>
                   <span> {formData.board}</span>
                   <span> {formData.marks}</span>
                 </div>
@@ -229,27 +226,27 @@ function ResumeBuilder() {
             </div>
           )}
           {formData.company !== '' && (
-            <div class='section experience_info'>
-              <p class='section_header'>Experience</p>
+            <div className='section experience_info'>
+              <p className='section_header'>Experience</p>
               <hr />
-              <div class='primary_row'>
+              <div className='primary_row'>
                 <p>{formData.company}</p>
                 <p>
                   <span>{formData.jstart}</span>
                   <span>{formData.jend} </span>
                 </p>
               </div>
-              <div class='secondary_row'>
+              <div className='secondary_row'>
                 <p>{formData.desig}</p>
                 <p>{formData.jdesc} </p>
               </div>
             </div>
           )}
           {formData.ptitle1 !== '' && (
-            <div class='section projects_info'>
-              <p class='section_header'>Projects</p>
+            <div className='section projects_info'>
+              <p className='section_header'>Projects</p>
               <hr />
-              <div class='primary_row'>
+              <div className='primary_row'>
                 <p>
                   {formData.ptitle1} |{' '}
                   <a href={formData.plink1}>
@@ -260,14 +257,14 @@ function ResumeBuilder() {
                   <span>{formData.ptech1}</span>
                 </p>
               </div>
-              <div class='secondary_row'>
+              <div className='secondary_row'>
                 <p>{formData.pdesc1} </p>
               </div>
               {/* <br /> */}
               {formData.ptitle2 !== '' && (
                 <div>
                   {' '}
-                  <div class='primary_row'>
+                  <div className='primary_row'>
                     <p>
                       {formData.ptitle2} |{' '}
                       <a href={formData.plink2}>
@@ -278,7 +275,7 @@ function ResumeBuilder() {
                       <span>{formData.ptech2}</span>
                     </p>
                   </div>
-                  <div class='secondary_row'>
+                  <div className='secondary_row'>
                     <p>{formData.pdesc2} </p>
                   </div>
                   {/* <br /> */}
@@ -286,7 +283,7 @@ function ResumeBuilder() {
               )}{' '}
               {formData.ptitle3 !== '' && (
                 <div>
-                  <div class='primary_row'>
+                  <div className='primary_row'>
                     <p>
                       {formData.ptitle3} |{' '}
                       <a href={formData.plink3}>
@@ -297,7 +294,7 @@ function ResumeBuilder() {
                       <span>{formData.ptech3}</span>
                     </p>
                   </div>
-                  <div class='secondary_row'>
+                  <div className='secondary_row'>
                     <p>{formData.pdesc3}</p>
                   </div>
                   {/* <br /> */}
@@ -305,7 +302,7 @@ function ResumeBuilder() {
               )}
               {formData.ptitle4 !== '' && (
                 <div>
-                  <div class='primary_row'>
+                  <div className='primary_row'>
                     <p>
                       {formData.ptitle4} |{' '}
                       <a href={formData.plink4}>
@@ -316,7 +313,7 @@ function ResumeBuilder() {
                       <span>{formData.ptech4}</span>
                     </p>
                   </div>
-                  <div class='secondary_row'>
+                  <div className='secondary_row'>
                     <p>{formData.pdesc4} </p>
                   </div>
                 </div>
@@ -324,8 +321,8 @@ function ResumeBuilder() {
             </div>
           )}{' '}
           {formData.lang !== '' && (
-            <div class='section skills_info'>
-              <p class='section_header'>Technical Skills</p>
+            <div className='section skills_info'>
+              <p className='section_header'>Technical Skills</p>
               <hr />
               {formData.lang !== '' && (
                 <p>
@@ -346,10 +343,10 @@ function ResumeBuilder() {
             </div>
           )}
           {formData.achieve1 !== '' && (
-            <div class='section achievement_info'>
-              <p class='section_header'>Achievements</p>
+            <div className='section achievement_info'>
+              <p className='section_header'>Achievements</p>
               <hr />
-              <div class='bulltets secondary_row'>
+              <div className='bulltets secondary_row'>
                 <ul>
                   {formData.achieve1 !== '' && <li>{formData.achieve1}</li>}
                   {formData.achieve2 !== '' && <li>{formData.achieve2} </li>}

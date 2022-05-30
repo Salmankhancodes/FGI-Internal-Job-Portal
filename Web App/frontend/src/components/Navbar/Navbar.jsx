@@ -5,7 +5,7 @@ import logo from './logo.png'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 
 function Navbar({ user }) {
   const [opt, setOpt] = useState(false)
@@ -46,7 +46,7 @@ function Navbar({ user }) {
                   onClick={(e) => {
                     userNav()
                   }}
-                  class='fas fa-user-circle'
+                  className='fas fa-user-circle'
                 ></i>
               </button>
               {opt === false ? (
@@ -57,7 +57,7 @@ function Navbar({ user }) {
                   <div className='userOption'>
                     <Link to='/profile'>
                       <p>
-                        <i class='fas fa-user'></i>Profile
+                        <i className='fas fa-user'></i>Profile
                       </p>
                     </Link>
                     <hr />
@@ -71,7 +71,7 @@ function Navbar({ user }) {
                         }
                       >
                         {' '}
-                        <i class='fas fa-sign-out-alt'></i>
+                        <i className='fas fa-sign-out-alt'></i>
                         Logout
                       </p>
                     </Link>
