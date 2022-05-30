@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from '@firebase/auth'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './Signup.css'
 
@@ -32,35 +33,54 @@ const Signup = () => {
   }
 
   return (
-    <div className='signup'>
-      <form onSubmit={register}>
-        <input
-          type='text'
-          placeholder='Name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Phone Number'
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-        <button type='submit'>Sign-Up</button>
-      </form>
-    </div>
+    <>
+      <div className='signupPage'>
+        <div className='signupformBox'>
+          <h1 className='signupHeading'>Sign Up</h1>
+          <form className='signupformContainer ' onSubmit={register}>
+            <input
+              className='inputName inputformfield'
+              type='text'
+              placeholder='Full Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+            <input
+              className='inputEmail inputformfield'
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              className='inputPassword inputformfield'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+
+            <input
+              className='inputPhone inputformfield'
+              type='number'
+              placeholder='Phone number'
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <br />
+            <button className='submitButton' type='submit'>
+              Signup
+            </button>
+          </form>
+          <p className='existingAccMsg'>
+            Already have an account? <Link to='/login'>Login here</Link>
+          </p>
+        </div>
+      </div>
+    </>
   )
 }
 

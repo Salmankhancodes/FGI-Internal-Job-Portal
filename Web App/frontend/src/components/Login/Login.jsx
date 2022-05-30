@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from '@firebase/auth'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { auth } from '../../config/firebase'
 import './Login.css'
 const Login = () => {
@@ -20,23 +21,37 @@ const Login = () => {
   }
 
   return (
-    <div className='login'>
-      <form onSubmit={login}>
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type='submit'>Login</button>
-      </form>
-    </div>
+    <>
+      <div className='loginPage'>
+        <div className='formBox'>
+          <h1 className='loginHeading'>Login</h1>
+          <form className='formContainer' onSubmit={login}>
+            <input
+              className='inputName'
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              className='inputPassword'
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <button className='submitButton' type='submit'>
+              Login
+            </button>
+          </form>
+          <p className='newAccMsg'>
+            Don't have an account? <Link to='/signup'>Signup here</Link>
+          </p>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -10,24 +10,28 @@
   background-color: #15b81c;
   display: flex;
   height: 4rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
 .navLeft {
-  width: 50%;
+  width: 30%;
   display: flex;
   align-items: center;
 }
 .navRight {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 50%;
+  justify-content: flex-end;
+  width: 70%;
+  margin-right: 2rem;
 }
 
 .navRight button {
   /* width: 7rem; */
   height: 2.5rem;
-  margin-left: 2rem;
+  margin-left: 3rem;
   /* background-color: #d8dd31; */
   background-color: #15b81c;
   border-radius: 10px;
@@ -49,8 +53,8 @@
 }
 
 .fa-user-circle {
-  position: absolute;
-  top: 1rem;
+  /* position: absolute;
+  top: 1rem; */
   color: white;
   /* margin-top: 1rem; */
   font-size: 35px;
@@ -74,4 +78,8 @@
 .userOption p {
   color: black;
   padding: 0.2rem;
+}
+
+.inputformfield {
+  padding-left: 1rem;
 }

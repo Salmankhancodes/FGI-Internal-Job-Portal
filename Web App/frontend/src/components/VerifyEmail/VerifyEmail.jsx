@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { auth, db } from '../../config/firebase'
 import { sendEmailVerification } from '@firebase/auth'
 import { addDoc, collection } from '@firebase/firestore'
+import './VerifyEmail.css'
 
 const VerifyEmail = () => {
   const [message, setMessage] = useState('')

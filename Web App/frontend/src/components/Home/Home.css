@@ -9,20 +9,23 @@ button {
 .homeFeeds {
   display: flex;
   height: calc(100vh - 4rem);
+  background-color: whitesmoke;
 }
 .homeLeft {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 60%;
-  /* background-color: red; */
+  height: 100vh;
+  background-color: whitesmoke;
 }
 .homeRight {
   width: 40%;
-  /* background-color: royalblue; */
+  background-color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .homeRight img {

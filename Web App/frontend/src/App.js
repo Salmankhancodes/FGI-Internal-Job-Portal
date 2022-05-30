@@ -36,6 +36,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/verifyemail' component={<VerifyEmail />} />
+
           <Route path='/confirmation' component={<Confirmation />} />
         </Routes>
       </Router>

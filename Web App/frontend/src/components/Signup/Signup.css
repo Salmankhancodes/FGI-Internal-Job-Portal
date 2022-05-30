@@ -1,3 +1,102 @@
-.signup {
-  padding-top: 4rem;
+.signupPage {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: #e4de6c; */
+  background: rgb(123, 237, 77);
+  background: linear-gradient(
+    7deg,
+    rgba(123, 237, 77, 0.9808298319327731) 0%,
+    rgba(236, 236, 99, 1) 79%
+  );
+  /* background-image: linear-gradient(
+    to right top,
+    #f0f058,
+    #d8f071,
+    #c4ef89,
+    #b5ec9e,
+    #ade7b0
+  ); background-color: rgb(159, 238, 163); */
+  /* background: rgb(21, 184, 28);
+  background: linear-gradient(
+    0deg,
+    rgba(21, 184, 28, 1) 35%,
+    rgba(238, 238, 49, 1) 100%
+  ); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupformBox {
+  width: 380px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* background-color: rgb(238, 238, 49); */
+}
+
+.signupHeading {
+  margin-top: 3rem;
+  font-size: 33px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 0%;
+}
+
+.signupformContainer {
+  margin-top: 40px;
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputName {
+  width: 240px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.inputEmail {
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.inputPassword {
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.inputPhone {
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.submitButton {
+  margin-top: 20px;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: #15b81c;
+  color: white;
+}
+
+.existingAccMsg {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.signupcontainer {
+  display: flex;
+  background-color: red;
+  height: 700px;
+  width: 900px;
 }

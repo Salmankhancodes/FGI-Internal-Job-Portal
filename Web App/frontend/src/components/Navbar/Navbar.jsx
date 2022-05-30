@@ -23,24 +23,32 @@ function Navbar({ user }) {
         </div>
 
         <div className='navRight'>
-          <Link to='/'>
-            <button>Home</button>
-          </Link>
-
-          <Link to='/search'>
-            <button>Search Jobs</button>
-          </Link>
-          <Link to='/resumebuilder'>
-            <button>Build Resume</button>
-          </Link>
+          {user ? (
+            <>
+              {' '}
+              <Link to='/'>
+                <button>Home</button>
+              </Link>
+              <Link to='/search'>
+                <button>Search Jobs</button>
+              </Link>
+              <Link to='/resumebuilder'>
+                <button>Build Resume</button>
+              </Link>
+            </>
+          ) : (
+            <></>
+          )}
           {user ? (
             <p className='userNav'>
-              <i
-                onClick={(e) => {
-                  userNav()
-                }}
-                class='fas fa-user-circle'
-              ></i>
+              <button>
+                <i
+                  onClick={(e) => {
+                    userNav()
+                  }}
+                  class='fas fa-user-circle'
+                ></i>
+              </button>
               {opt === false ? (
                 ''
               ) : (

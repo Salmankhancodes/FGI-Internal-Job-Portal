@@ -1,4 +1,74 @@
-.login {
-  background-color: red;
-  padding-top: 5rem;
+.loginPage {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(123, 237, 77);
+  background: linear-gradient(
+    7deg,
+    rgba(123, 237, 77, 0.9808298319327731) 0%,
+    rgba(236, 236, 99, 1) 79%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formBox {
+  width: 350px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  border-radius: 30px;
+}
+
+.loginHeading {
+  margin-top: 4rem;
+  font-size: 33px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.formContainer {
+  margin-top: 40px;
+  width: 350px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputName {
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  padding-left: 1rem;
+}
+.inputPassword {
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  padding-left: 1rem;
+}
+
+.submitButton {
+  margin-top: 20px;
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: #15b81c;
+  color: white;
+}
+.submitButton:hover {
+  background-color: #eee31e;
+  color: black;
+}
+
+.newAccMsg {
+  margin-top: 20px;
+  font-size: 16px;
 }

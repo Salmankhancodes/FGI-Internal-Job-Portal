@@ -179,17 +179,20 @@ function ResumeBuilder() {
               <span>{formData.city}</span>
               {formData.city !== '' && <span>India</span>}
             </p>
-            <p class='links'>
+            <p class='links' style={{ fontSize: '12px' }}>
               <span>{formData.phone}</span>
               <span>{formData.email}</span>
-              <span>
-                <a href={formData.lnkdn}></a>
-                {formData.lnkdn}
-              </span>
-              <span>
-                <a href={formData.github}></a>
-                {formData.github}
-              </span>
+
+              {formData.lnkdn !== '' && (
+                <span>
+                  <a href={formData.lnkdn}>LinkedinProfile</a>
+                </span>
+              )}
+              {formData.github !== '' && (
+                <span>
+                  <a href={formData.github}>GithubProfile</a>
+                </span>
+              )}
             </p>
           </div>
           {formData.college !== '' && (

@@ -1,0 +1,24 @@
+.messageBox {
+  width: 1800px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(229, 252, 205);
+}
+
+.verificationMessaage {
+  display: flex;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+.messageBox h3 {
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+
+.verificationMessaage {
+  font-size: 30px;
+}
