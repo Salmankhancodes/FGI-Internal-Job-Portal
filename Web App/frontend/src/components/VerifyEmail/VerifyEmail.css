@@ -1,6 +1,6 @@
 .messageBox {
   width: 1800px;
-  height: 500px;
+  height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,14 +11,20 @@
 .verificationMessaage {
   display: flex;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-style: italic;
+  font-size: 30px;
 }
 .messageBox h3 {
   font-size: 50px;
   margin-bottom: 0px;
 }
 
-.verificationMessaage {
-  font-size: 30px;
+.resendButton {
+  background-color: greenyellow;
+  border-radius: 25px;
+  padding: 15px;
+  color: crimson;
+  font-weight: bold;
+  margin-left: 250px;
 }
