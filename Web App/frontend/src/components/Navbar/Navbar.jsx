@@ -2,14 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import logo from './logo.png'
-import { signOut } from 'firebase/auth'
-import { auth } from '../../config/firebase'
-import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-function Navbar({ user }) {
+function Navbar() {
   const [opt, setOpt] = useState(false)
-  const navigate = useNavigate()
   const userNav = () => {
     setOpt(!opt)
   }
@@ -23,23 +19,18 @@ function Navbar({ user }) {
         </div>
 
         <div className='navRight'>
-          {user ? (
-            <>
-              {' '}
-              <Link to='/'>
-                <button>Home</button>
-              </Link>
-              <Link to='/search'>
-                <button>Search Jobs</button>
-              </Link>
-              <Link to='/resumebuilder'>
-                <button>Build Resume</button>
-              </Link>
-            </>
-          ) : (
-            <></>
-          )}
-          {user ? (
+          <>
+            <Link to='/'>
+              <button>Home</button>
+            </Link>
+            <Link to='/search'>
+              <button>Search Jobs</button>
+            </Link>
+            <Link to='/resumebuilder'>
+              <button>Build Resume</button>
+            </Link>
+          </>
+          {
             <p className='userNav'>
               <button>
                 <i
@@ -62,15 +53,7 @@ function Navbar({ user }) {
                     </Link>
                     <hr />
                     <Link to='/'>
-                      <p
-                        onClick={() =>
-                          signOut(auth).then(() => {
-                            setOpt(false)
-                            navigate('/login')
-                          })
-                        }
-                      >
-                        {' '}
+                      <p onClick={() => {}}>
                         <i className='fas fa-sign-out-alt'></i>
                         Logout
                       </p>
@@ -79,16 +62,7 @@ function Navbar({ user }) {
                 </>
               )}
             </p>
-          ) : (
-            <>
-              <Link to='/login'>
-                <button>Login</button>
-              </Link>{' '}
-              <Link to='/signup'>
-                <button>Sign Up</button>
-              </Link>
-            </>
-          )}
+          }
         </div>
       </div>
     </nav>

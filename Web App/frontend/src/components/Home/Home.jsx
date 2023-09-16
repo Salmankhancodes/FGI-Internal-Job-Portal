@@ -8,12 +8,10 @@ function Home() {
   const navigate = useNavigate()
   return (
     <div className='homeFeeds'>
-      <div className='homeLeft'>
-        {/* <h3>Hi 👋 {auth.currentUser.email}</h3> */}
+      <div className='homeLeft'>-
         <img src={logo} alt='' />
         <div className='homeHeading'>
           <h1>FGI-Internal Job Portal</h1>
-          {/* <h3>Internal Job Portal</h3> */}
           <p>1️⃣Build Resume 2️⃣ Search Job 3️⃣ Apply</p>
           <div className='homeButtons'>
             <button onClick={() => navigate('/search')} className='homeButton'>

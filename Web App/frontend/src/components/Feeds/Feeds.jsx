@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import './Feeds.css'
-// import image from './EmptyFeeds.png'
-// import logo from './logo.png'
 import loader from './loader.gif'
 import nodataimage from './nodata.png'
-import { useNavigate } from 'react-router-dom'
 
 function Feeds() {
-  const navigate = useNavigate()
   const [location, setLocation] = useState('')
   const [search, setSearch] = useState('')
   const [jobData, setJobData] = useState(null)
@@ -76,16 +72,6 @@ function Feeds() {
   return (
     <div className='feeds'>
       <div className='searchWrapper'>
-        {/* <button
-          onClick={() => {
-            signOut(auth).then(() => {
-              navigate('/login')
-            })
-          }}
-        >
-          Logout
-        </button> */}
-        {/* <h1> {auth.currentUser.email} </h1> */}
         <input
           className='searchBarCity'
           placeholder='City'
@@ -95,44 +81,32 @@ function Feeds() {
         />
         <input
           className='searchBarTitle'
-          placeholder='search'
+          placeholder='Job title'
           type='text'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />{' '}
-        {jobData === null ? (
-          ''
-        ) : (
-          <select
-            name='sortdate'
-            id='sortdate'
-            // value={''}
-            onChange={(e) => sortBy(e.target.value)}
-          >
-            {console.log(jobData)}
-            <option value=''>Sort By</option>
-            <option value='asce'>Least Recent</option>
-            <option value='desc'>Most Recent</option>
-          </select>
-        )}
+        />
+        <select
+          name='sortdate'
+          id='sortdate'
+          onChange={(e) => sortBy(e.target.value)}
+          disabled={jobData === null || jobData.length <= 1}
+          title={
+            jobData === null || jobData.length <= 1
+              ? 'No or not enough data to sort'
+              : ''
+          }
+        >
+          {console.log(jobData)}
+          <option value=''>Sort By</option>
+          <option value='asce'>Least Recent</option>
+          <option value='desc'>Most Recent</option>
+        </select>
         <button className='searchJobButton' onClick={handleSubmit}>
           Find a Job
         </button>
       </div>
-      {/* <label htmlFor='sortdate'>Sort By:</label> */}
-      {/* //{' '} */}
-      {/* Will be adding the country when adding filters,commented and hardcoded as for now */}
-      {/* <input
-        placeholder='
-        country'
-        type='text'
-        value={country}
-        onChange={(e) => setCountry(e.target.value)}
-      /> */}
-      {/* Sort by
-      <button onClick={handleSortDateasc}>date asc</button>
-    <button onClick={handleSortDatedesc}>by date des</button> */}
-      {loading === true ? (
+      {loading ? (
         <div className='loader'>
           <img src={loader} alt='' />
           <h3>Loading please wait....</h3>
@@ -170,7 +144,6 @@ function Feeds() {
                   </p>
                   <p className='secondRow'>
                     <span>
-                      {/* <b>Company:</b> */}
                       <i className='far fa-building'></i>
 
                       {eachJob.company.display_name}
@@ -192,10 +165,6 @@ function Feeds() {
                       {eachJob.created.split('T')[0]}
                     </span>
                   </p>
-                  {/* <p>
-                  <b>Job description:</b>
-                  {eachJob.description}
-                </p> */}
                   <p className='thirdRow'>
                     <a href={eachJob.redirect_url}>
                       <button className='applyButton'>Apply</button>
@@ -212,13 +181,3 @@ function Feeds() {
 }
 
 export default Feeds
-
-// console.log('position', data.data.results[0].title)
-// console.log('Company name', data.data.results[0].company.display_name)
-// console.log(data.data.results[0].description)
-// console.log(
-//   data.data.results[0].salary_min / 100000,
-//   '-',
-//   data.data.results[0].salary_max / 100000,
-//   ' LPA'
-// )
