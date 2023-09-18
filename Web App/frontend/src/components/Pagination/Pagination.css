@@ -1,0 +1,21 @@
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  .paginate-button {
+    width: 100px;
+    margin: 5px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: white;
+  }
+  .page-number {
+    font-style: italic;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .paginate-button:disabled {
+    cursor: not-allowed;
+  }
+}

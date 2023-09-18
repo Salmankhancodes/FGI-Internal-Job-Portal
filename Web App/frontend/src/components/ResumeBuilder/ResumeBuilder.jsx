@@ -14,7 +14,7 @@ function ResumeBuilder() {
   window.onbeforeunload = function () {
     return ''
   }
-  //name sates
+  //form states
   const [page, setPage] = useState(0)
   const [formData, setFormData] = useState({
     first: '',
@@ -157,7 +157,7 @@ function ResumeBuilder() {
           </div>
           <div className='formbody'>{displayComponent()}</div>
         </div>
-
+        {/* break it down as a seprate component */}
         <div className='resume_page'>
           <div className='contact_info'>
             <p
