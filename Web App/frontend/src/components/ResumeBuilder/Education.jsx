@@ -1,70 +1,88 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { updateEducationInfo } from '../../actions/education-info'
 
-function Education({ formData, setFormData }) {
+function Education(props) {
+  const { educationInfo, dispatchEducationInfo } = props
+  console.log(educationInfo)
+
+  const handleUpdateEducationInfo = (e, fieldToUpdate) => {
+    dispatchEducationInfo({
+      ...educationInfo,
+      [fieldToUpdate]: e.target.value,
+    })
+  }
   return (
     <div>
       <input
         placeholder='College Name'
         type='text'
-        value={formData.college}
-        onChange={(e) => setFormData({ ...formData, college: e.target.value })}
+        value={educationInfo.collegeName}
+        onChange={(e) => handleUpdateEducationInfo(e, 'collegeName')}
       />
       <input
         placeholder='start year'
         type='month'
-        value={formData.cstart}
-        onChange={(e) => setFormData({ ...formData, cstart: e.target.value })}
+        value={educationInfo.collegeStartYear}
+        onChange={(e) => handleUpdateEducationInfo(e, 'collegeStartYear')}
       />
       <input
         placeholder='end year'
         type='month'
-        value={formData.cend}
-        onChange={(e) => setFormData({ ...formData, cend: e.target.value })}
+        value={educationInfo.collegeEndYear}
+        onChange={(e) => handleUpdateEducationInfo(e, 'collegeEndYear')}
       />
       <input
         placeholder='Course'
         type='text'
-        value={formData.course}
-        onChange={(e) => setFormData({ ...formData, course: e.target.value })}
+        value={educationInfo.course}
+        onChange={(e) => handleUpdateEducationInfo(e, 'course')}
       />
       <input
         placeholder='branch'
         type='text'
-        value={formData.branch}
-        onChange={(e) => setFormData({ ...formData, branch: e.target.value })}
+        value={educationInfo.branch}
+        onChange={(e) => handleUpdateEducationInfo(e, 'branch')}
       />
       <input
         placeholder='cgpa'
         type='text'
-        value={formData.cgpa}
-        onChange={(e) => setFormData({ ...formData, cgpa: e.target.value })}
+        value={educationInfo.cgpa}
+        onChange={(e) => handleUpdateEducationInfo(e, 'cgpa')}
       />
       <input
         placeholder='school'
         type='text'
-        value={formData.school}
-        onChange={(e) => setFormData({ ...formData, school: e.target.value })}
+        value={educationInfo.schoolName}
+        onChange={(e) => handleUpdateEducationInfo(e, 'schoolName')}
       />
       <input
         placeholder='board name'
         type='text'
-        value={formData.board}
-        onChange={(e) => setFormData({ ...formData, board: e.target.value })}
+        value={educationInfo.board}
+        onChange={(e) => handleUpdateEducationInfo(e, 'board')}
       />
       <input
         placeholder='year'
         type='month'
-        value={formData.send}
-        onChange={(e) => setFormData({ ...formData, send: e.target.value })}
+        value={educationInfo.schoolEndYear}
+        onChange={(e) => handleUpdateEducationInfo(e, 'schoolEndYear')}
       />
       <input
         placeholder='marks/percentage obtained'
         type='text'
-        value={formData.marks}
-        onChange={(e) => setFormData({ ...formData, marks: e.target.value })}
+        value={educationInfo.marks}
+        onChange={(e) => handleUpdateEducationInfo(e, 'marks')}
       />
     </div>
   )
 }
 
-export default Education
+export default connect(
+  ({ educationInfo }) => ({
+    educationInfo,
+  }),
+  (dispatch) => ({
+    dispatchEducationInfo: (payload) => dispatch(updateEducationInfo(payload)),
+  })
+)(Education)

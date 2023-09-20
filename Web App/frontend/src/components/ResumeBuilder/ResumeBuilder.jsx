@@ -1,69 +1,20 @@
 import React, { useState } from 'react'
-import './ResumeBuilder.css'
 import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
-
 import Contact from './Contact'
 import Education from './Education'
 import Experience from './Experience'
 import Projects from './Projects'
 import Achievements from './Achievements'
 import TechnicalSkills from './TechnicalSkills'
+import PreviewPage from './PreviewPage'
+import './ResumeBuilder.css'
 
 function ResumeBuilder() {
   window.onbeforeunload = function () {
     return ''
   }
-  //form states
   const [page, setPage] = useState(0)
-  const [formData, setFormData] = useState({
-    first: '',
-    last: '',
-    add: '',
-    city: '',
-    phone: null,
-    email: '',
-    lnkdn: '',
-    github: '',
-    college: '',
-    cstart: '',
-    cend: '',
-    course: '',
-    branch: '',
-    cgpa: '',
-    school: '',
-    board: '',
-    send: '',
-    marks: '',
-    company: '',
-    jstart: '',
-    jend: '',
-    desig: '',
-    jdesc: '',
-    ptitle1: '',
-    ptech1: '',
-    pdesc1: '',
-    plink1: '',
-    ptitle2: '',
-    ptech2: '',
-    pdesc2: '',
-    plink2: '',
-    ptitle3: '',
-    ptech3: '',
-    pdesc3: '',
-    plink3: '',
-    ptitle4: '',
-    ptech4: '',
-    pdesc4: '',
-    plink4: '',
-    lang: '',
-    tech: '',
-    tools: '',
-    achieve1: '',
-    achieve2: '',
-    achieve3: '',
-    achieve4: '',
-  })
 
   const sectionName = [
     'Contact',
@@ -75,18 +26,12 @@ function ResumeBuilder() {
   ]
 
   function displayComponent() {
-    if (page === 0)
-      return <Contact formData={formData} setFormData={setFormData} />
-    else if (page === 1)
-      return <Education formData={formData} setFormData={setFormData} />
-    else if (page === 2)
-      return <Experience formData={formData} setFormData={setFormData} />
-    else if (page === 3)
-      return <Projects formData={formData} setFormData={setFormData} />
-    else if (page === 4)
-      return <TechnicalSkills formData={formData} setFormData={setFormData} />
-    else if (page === 5)
-      return <Achievements formData={formData} setFormData={setFormData} />
+    if (page === 0) return <Contact />
+    else if (page === 1) return <Education />
+    else if (page === 2) return <Experience />
+    else if (page === 3) return <Projects />
+    else if (page === 4) return <TechnicalSkills />
+    else if (page === 5) return <Achievements />
   }
 
   function handleDownload() {
@@ -157,208 +102,7 @@ function ResumeBuilder() {
           </div>
           <div className='formbody'>{displayComponent()}</div>
         </div>
-        {/* break it down as a seprate component */}
-        <div className='resume_page'>
-          <div className='contact_info'>
-            <p
-              className='name'
-              style={{
-                fontSize: '30px',
-                fontWeight: '500',
-                fontFamily: 'sans-serif',
-              }}
-            >
-              <span>{formData.first}</span>
-              <span>{formData.last}</span>
-            </p>
-            <p className='address'>
-              <span>{formData.add}</span>
-              <span>{formData.city}</span>
-              {formData.city !== '' && <span>India</span>}
-            </p>
-            <p className='links' style={{ fontSize: '12px' }}>
-              <span>{formData.phone}</span>
-              <span>{formData.email}</span>
-
-              {formData.lnkdn !== '' && (
-                <span>
-                  <a href={formData.lnkdn}>LinkedinProfile</a>
-                </span>
-              )}
-              {formData.github !== '' && (
-                <span>
-                  <a href={formData.github}>GithubProfile</a>
-                </span>
-              )}
-            </p>
-          </div>
-          {formData.college !== '' && (
-            <div className='section education_info'>
-              <p className='section_header'>Education</p>
-              <hr />
-              <div className='subsection_info'>
-                <div className='primary_row'>
-                  <p>{formData.college}</p>
-                  <p>
-                    <span>{formData.cstart}</span>
-                    <span>{formData.cend} </span>
-                  </p>
-                </div>
-                <div className='secondary_row'>
-                  <span>
-                    {formData.course} &nbsp; in &nbsp;{formData.branch}{' '}
-                  </span>
-                  <span>{formData.cgpa}</span>
-                </div>
-              </div>
-              <div className='subsection_info'>
-                <div className='primary_row'>
-                  <p>{formData.school}</p>
-                  <p>
-                    <span>{formData.send} </span>
-                  </p>
-                </div>
-                <div className='secondary_row'>
-                  <span> {formData.board}</span>
-                  <span> {formData.marks}</span>
-                </div>
-              </div>
-            </div>
-          )}
-          {formData.company !== '' && (
-            <div className='section experience_info'>
-              <p className='section_header'>Experience</p>
-              <hr />
-              <div className='primary_row'>
-                <p>{formData.company}</p>
-                <p>
-                  <span>{formData.jstart}</span>
-                  <span>{formData.jend} </span>
-                </p>
-              </div>
-              <div className='secondary_row'>
-                <p>{formData.desig}</p>
-                <p>{formData.jdesc} </p>
-              </div>
-            </div>
-          )}
-          {formData.ptitle1 !== '' && (
-            <div className='section projects_info'>
-              <p className='section_header'>Projects</p>
-              <hr />
-              <div className='primary_row'>
-                <p>
-                  {formData.ptitle1} |{' '}
-                  <a href={formData.plink1}>
-                    <i>Link to work</i>
-                  </a>
-                </p>
-                <p>
-                  <span>{formData.ptech1}</span>
-                </p>
-              </div>
-              <div className='secondary_row'>
-                <p>{formData.pdesc1} </p>
-              </div>
-              {/* <br /> */}
-              {formData.ptitle2 !== '' && (
-                <div>
-                  {' '}
-                  <div className='primary_row'>
-                    <p>
-                      {formData.ptitle2} |{' '}
-                      <a href={formData.plink2}>
-                        <i>Link to work</i>
-                      </a>
-                    </p>
-                    <p>
-                      <span>{formData.ptech2}</span>
-                    </p>
-                  </div>
-                  <div className='secondary_row'>
-                    <p>{formData.pdesc2} </p>
-                  </div>
-                  {/* <br /> */}
-                </div>
-              )}{' '}
-              {formData.ptitle3 !== '' && (
-                <div>
-                  <div className='primary_row'>
-                    <p>
-                      {formData.ptitle3} |{' '}
-                      <a href={formData.plink3}>
-                        <i>Link to work</i>
-                      </a>
-                    </p>
-                    <p>
-                      <span>{formData.ptech3}</span>
-                    </p>
-                  </div>
-                  <div className='secondary_row'>
-                    <p>{formData.pdesc3}</p>
-                  </div>
-                  {/* <br /> */}
-                </div>
-              )}
-              {formData.ptitle4 !== '' && (
-                <div>
-                  <div className='primary_row'>
-                    <p>
-                      {formData.ptitle4} |{' '}
-                      <a href={formData.plink4}>
-                        <i>Link to work</i>
-                      </a>
-                    </p>
-                    <p>
-                      <span>{formData.ptech4}</span>
-                    </p>
-                  </div>
-                  <div className='secondary_row'>
-                    <p>{formData.pdesc4} </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}{' '}
-          {formData.lang !== '' && (
-            <div className='section skills_info'>
-              <p className='section_header'>Technical Skills</p>
-              <hr />
-              {formData.lang !== '' && (
-                <p>
-                  <b>Languages:</b>&nbsp;<span>{formData.lang}</span>
-                </p>
-              )}
-              {formData.tech !== '' && (
-                <p>
-                  <b>Technologies/Framworks:</b>&nbsp;
-                  <span>{formData.tech}</span>
-                </p>
-              )}
-              {formData.tools !== '' && (
-                <p>
-                  <b>Developer Tools:</b>&nbsp;<span>{formData.tools}</span>
-                </p>
-              )}
-            </div>
-          )}
-          {formData.achieve1 !== '' && (
-            <div className='section achievement_info'>
-              <p className='section_header'>Achievements</p>
-              <hr />
-              <div className='bulltets secondary_row'>
-                <ul>
-                  {formData.achieve1 !== '' && <li>{formData.achieve1}</li>}
-                  {formData.achieve2 !== '' && <li>{formData.achieve2} </li>}
-                  {formData.achieve3 !== '' && <li>{formData.achieve3}</li>}
-                  {formData.achieve4 !== '' && (
-                    <li>{formData.achieve4}</li>
-                  )}{' '}
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
+        <PreviewPage />
       </div>
     </>
   )

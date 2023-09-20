@@ -36,7 +36,7 @@ const JobCard = ({ eachJob }) => {
         </span>
       </p>
       <p className='thirdRow'>
-        <a target='_blank' href={eachJob.redirect_url}>
+        <a target='_blank' rel='noreferrer' href={eachJob.redirect_url}>
           <button className='applyButton'>Apply</button>
         </a>
       </p>

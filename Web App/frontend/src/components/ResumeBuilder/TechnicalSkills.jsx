@@ -1,29 +1,48 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { updateTechnicalSkills } from '../../actions/technical-skills-info'
 
-function TechnicalSkills({ formData, setFormData }) {
+function TechnicalSkills(props) {
+  const { technicalSkillsInfo, dispatchTechnicalSkills } = props
+  console.log(technicalSkillsInfo)
+
+  const handleUpdateTechnicalSkills = (e, fieldToUpdate) => {
+    console.log(e.target.value)
+    dispatchTechnicalSkills({
+      ...technicalSkillsInfo,
+      [fieldToUpdate]: e.target.value,
+    })
+  }
+
   return (
     <div>
       <input
         placeholder='programming Languages'
         type='text'
-        value={formData.lang}
-        onChange={(e) => setFormData({ ...formData, lang: e.target.value })}
+        value={technicalSkillsInfo.programmingLanguage}
+        onChange={(e) => handleUpdateTechnicalSkills(e, 'programmingLanguage')}
       />
       <input
         placeholder='Technologies/frameworks'
         type='text'
-        value={formData.tech}
-        onChange={(e) => setFormData({ ...formData, tech: e.target.value })}
+        value={technicalSkillsInfo.technology}
+        onChange={(e) => handleUpdateTechnicalSkills(e, 'technology')}
       />
 
       <input
         placeholder='Developer tools'
         type='text'
-        value={formData.tools}
-        onChange={(e) => setFormData({ ...formData, tools: e.target.value })}
+        value={technicalSkillsInfo.tools}
+        onChange={(e) => handleUpdateTechnicalSkills(e, 'tools')}
       />
     </div>
   )
 }
 
-export default TechnicalSkills
+export default connect(
+  ({ technicalSkillsInfo }) => ({ technicalSkillsInfo }),
+  (dispatch) => ({
+    dispatchTechnicalSkills: (payload) =>
+      dispatch(updateTechnicalSkills(payload)),
+  })
+)(TechnicalSkills)

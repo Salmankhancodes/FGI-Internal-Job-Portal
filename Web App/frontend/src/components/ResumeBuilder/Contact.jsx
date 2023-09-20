@@ -1,58 +1,80 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { updateContactInfo } from '../../actions/contact-info'
 
-function Contact({ formData, setFormData }) {
+function Contact(props) {
+  const { contactInfo, dispatchContactUpdate } = props
+  console.log(contactInfo)
+
+  const handleUpdatePersonalInfo = (e, fieldToUpdate) => {
+    dispatchContactUpdate({
+      ...contactInfo,
+      [fieldToUpdate]: e.target.value,
+    })
+  }
   return (
     <div className='contactContainer'>
       <input
         placeholder='first name'
         type='text'
-        value={formData.first}
-        onChange={(e) => setFormData({ ...formData, first: e.target.value })}
+        value={contactInfo.firstName}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'firstName')}
       />
       <input
         placeholder='last name'
         type='text'
-        value={formData.last}
-        onChange={(e) => setFormData({ ...formData, last: e.target.value })}
+        value={contactInfo.lastName}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'lastName')}
       />
       <input
         placeholder='Address'
         type='text'
-        value={formData.add}
-        onChange={(e) => setFormData({ ...formData, add: e.target.value })}
+        value={contactInfo.address}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'address')}
       />
       <input
         placeholder='city'
         type='text'
-        value={formData.city}
-        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+        value={contactInfo.city}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'city')}
       />
       <input
         placeholder='phone number'
         type='number'
-        value={formData.phone}
-        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+        value={contactInfo.phone}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'phone')}
       />
       <input
         placeholder='email'
         type='email'
-        value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        value={contactInfo.email}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'email')}
       />
       <input
         placeholder='linkedin url'
         type='text'
-        value={formData.lnkdn}
-        onChange={(e) => setFormData({ ...formData, lnkdn: e.target.value })}
+        value={contactInfo.linkedin}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'linkedin')}
       />
       <input
         placeholder='github link'
         type='text'
-        value={formData.github}
-        onChange={(e) => setFormData({ ...formData, github: e.target.value })}
+        value={contactInfo.github}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'github')}
+      />
+      <input
+        placeholder='portfolio link'
+        type='text'
+        value={contactInfo.portfolio}
+        onChange={(e) => handleUpdatePersonalInfo(e, 'portfolio')}
       />
     </div>
   )
 }
 
-export default Contact
+export default connect(
+  (state) => ({ contactInfo: state.contactInfo }),
+  (dispatch) => ({
+    dispatchContactUpdate: (payload) => dispatch(updateContactInfo(payload)),
+  })
+)(Contact)

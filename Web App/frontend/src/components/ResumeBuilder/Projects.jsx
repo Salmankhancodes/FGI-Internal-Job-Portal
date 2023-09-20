@@ -1,109 +1,127 @@
 import React from 'react'
+import { updateProjectsInfo } from '../../actions/projects-info'
+import { connect } from 'react-redux'
 
-function Projects({ formData, setFormData }) {
+function Projects(props) {
+  const { projectsInfo, dispatchProjectsInfo } = props
+  console.log(props)
+
+  const handleUpdateProjectsInfo = (e, fieldToUpdate) => {
+    dispatchProjectsInfo({
+      ...projectsInfo,
+      [fieldToUpdate]: e.target.value,
+    })
+  }
   return (
     <div>
       <input
         placeholder='Project 1 titie'
         type='text'
-        value={formData.ptitle1}
-        onChange={(e) => setFormData({ ...formData, ptitle1: e.target.value })}
+        value={projectsInfo.projectTitle1}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectTitle1')}
       />
       <input
         placeholder='Project 1 tech used'
         type='text'
-        value={formData.ptech1}
-        onChange={(e) => setFormData({ ...formData, ptech1: e.target.value })}
+        value={projectsInfo.techStack1}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'techStack1')}
       />{' '}
       <input
         placeholder='Project 1 Link'
         type='text'
-        value={formData.plink1}
-        onChange={(e) => setFormData({ ...formData, plink1: e.target.value })}
+        value={projectsInfo.projectLink1}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectLink1')}
       />{' '}
       <input
         placeholder='Project 1 description'
         type='text'
-        value={formData.pdesc1}
-        onChange={(e) => setFormData({ ...formData, pdesc1: e.target.value })}
+        value={projectsInfo.projectDescription1}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectDescription1')}
       />
       <br />
       <input
         placeholder='Project 2 titie'
         type='text'
-        value={formData.ptitle2}
-        onChange={(e) => setFormData({ ...formData, ptitle2: e.target.value })}
+        value={projectsInfo.projectTitle2}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectTitle2')}
       />
       <input
         placeholder='Project 2 tech used'
         type='text'
-        value={formData.ptech2}
-        onChange={(e) => setFormData({ ...formData, ptech2: e.target.value })}
+        value={projectsInfo.techStack2}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'techStack2')}
       />{' '}
       <input
         placeholder='Project 2 Link'
         type='text'
-        value={formData.plink2}
-        onChange={(e) => setFormData({ ...formData, plink2: e.target.value })}
+        value={projectsInfo.projectLink2}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectLink2')}
       />
       <input
         placeholder='Project 2 description'
         type='text'
-        value={formData.pdesc2}
-        onChange={(e) => setFormData({ ...formData, pdesc2: e.target.value })}
+        value={projectsInfo.projectDescription2}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectDescription2')}
       />
       <br />
       <input
         placeholder='Project 3 titie'
         type='text'
-        value={formData.ptitle3}
-        onChange={(e) => setFormData({ ...formData, ptitle3: e.target.value })}
+        value={projectsInfo.projectTitle3}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectTitle3')}
       />
       <input
         placeholder='Project 3 tech used'
         type='text'
-        value={formData.ptech3}
-        onChange={(e) => setFormData({ ...formData, ptech3: e.target.value })}
+        value={projectsInfo.techStack3}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'techStack3')}
       />{' '}
       <input
         placeholder='Project 3 description'
         type='text'
-        value={formData.pdesc3}
-        onChange={(e) => setFormData({ ...formData, pdesc3: e.target.value })}
+        value={projectsInfo.projectDescription3}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectDescription3')}
       />{' '}
       <input
         placeholder='Project 3 Link'
         type='text'
-        value={formData.plink3}
-        onChange={(e) => setFormData({ ...formData, plink3: e.target.value })}
+        value={projectsInfo.projectLink3}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectLink3')}
       />
       <br />
       <input
         placeholder='Project 4 titie'
         type='text'
-        value={formData.ptitle4}
-        onChange={(e) => setFormData({ ...formData, ptitle4: e.target.value })}
+        value={projectsInfo.projectTitle4}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectTitle4')}
       />
       <input
         placeholder='Project 4 tech used'
         type='text'
-        value={formData.ptech4}
-        onChange={(e) => setFormData({ ...formData, ptech4: e.target.value })}
+        value={projectsInfo.techStack4}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'techStack4')}
       />
       <input
         placeholder='Project 4 Link'
         type='text'
-        value={formData.plink4}
-        onChange={(e) => setFormData({ ...formData, plink4: e.target.value })}
+        value={projectsInfo.projectLink4}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectLink4')}
       />
       <input
         placeholder='Project 4 description'
         type='text'
-        value={formData.pdesc4}
-        onChange={(e) => setFormData({ ...formData, pdesc4: e.target.value })}
+        value={projectsInfo.projectDescription4}
+        onChange={(e) => handleUpdateProjectsInfo(e, 'projectDescription4')}
       />
     </div>
   )
 }
 
-export default Projects
+export default connect(
+  ({ projectsInfo }) => ({
+    projectsInfo,
+  }),
+  (dispatch) => ({
+    dispatchProjectsInfo: (payload) => dispatch(updateProjectsInfo(payload)),
+  })
+)(Projects)
