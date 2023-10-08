@@ -17,12 +17,11 @@ function Feeds() {
 
   const country = 'in'
 
-  let API_KEY = '3d3b4f0df0ffe00a90506fed37c05aa6'
-  let APP_ID = '36d1ac77'
+  let ADZUNA_API_KEY = process.env.REACT_APP_ADZUNA_API_KEY
+  let ADZUNA_APP_ID = process.env.REACT_APP_ADZUNA_APP_ID
   let BASE_URL = 'https://api.adzuna.com/v1/api/jobs'
   let BASE_PARAMS = `search/${currentPage}?&results_per_page=10&content-type=application/json`
-  const targetURL = `${BASE_URL}/${country.toLowerCase()}/${BASE_PARAMS}&app_id=${APP_ID}&app_key=${API_KEY}&what=${search}&where=${location}`
-  console.log(targetURL)
+  const targetURL = `${BASE_URL}/${country.toLowerCase()}/${BASE_PARAMS}&app_id=${ADZUNA_APP_ID}&app_key=${ADZUNA_API_KEY}&what=${search}&where=${location}`
 
   const handleSubmit = async (fromSearchButton = false) => {
     setLoading(true)
@@ -84,7 +83,6 @@ function Feeds() {
           id='sortdate'
           onChange={(e) => handleSortDate(e.target.value)}
         >
-          {console.log(jobData)}
           <option value=''>Sort By</option>
           <option value='asc'>Least Recent</option>
           <option value='desc'>Most Recent</option>

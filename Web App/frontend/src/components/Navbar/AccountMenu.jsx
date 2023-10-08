@@ -6,11 +6,9 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 
 const AccountMenu = ({ opt, user, logoutUserDispatch }) => {
-  console.log(user.userInfo)
   const handleSignOut = () => {
     signOut(auth)
     logoutUserDispatch()
-    console.log(user)
   }
 
   return (

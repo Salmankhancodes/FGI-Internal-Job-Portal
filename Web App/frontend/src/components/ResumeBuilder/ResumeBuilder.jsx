@@ -36,7 +36,6 @@ function ResumeBuilder() {
 
   function handleDownload() {
     let div = document.querySelectorAll('.resume_page')[0]
-    console.log(div)
     html2canvas(div)
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png')
@@ -47,9 +46,7 @@ function ResumeBuilder() {
         // pdf.output('dataurlnewwindow');
         pdf.save('resume.pdf')
       })
-      .catch(function (error) {
-        console.log(error)
-      })
+      .catch(function (error) {})
   }
 
   return (

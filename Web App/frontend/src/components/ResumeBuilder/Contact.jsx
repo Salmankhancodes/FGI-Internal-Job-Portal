@@ -4,7 +4,6 @@ import { updateContactInfo } from '../../actions/contact-info'
 
 function Contact(props) {
   const { contactInfo, dispatchContactUpdate } = props
-  console.log(contactInfo)
 
   const handleUpdatePersonalInfo = (e, fieldToUpdate) => {
     dispatchContactUpdate({

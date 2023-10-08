@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 function Projects(props) {
   const { projectsInfo, dispatchProjectsInfo } = props
-  console.log(props)
 
   const handleUpdateProjectsInfo = (e, fieldToUpdate) => {
     dispatchProjectsInfo({

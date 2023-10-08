@@ -4,7 +4,6 @@ import { updateEducationInfo } from '../../actions/education-info'
 
 function Education(props) {
   const { educationInfo, dispatchEducationInfo } = props
-  console.log(educationInfo)
 
   const handleUpdateEducationInfo = (e, fieldToUpdate) => {
     dispatchEducationInfo({

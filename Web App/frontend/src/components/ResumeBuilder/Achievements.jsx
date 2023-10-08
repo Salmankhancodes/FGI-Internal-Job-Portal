@@ -4,7 +4,6 @@ import { updateAchievementInfo } from '../../actions/achievement-info'
 
 function Achievements(props) {
   const { achievementInfo, dispatchAchievementInfo } = props
-  console.log(achievementInfo)
 
   const handleUpdateAchievementInfo = (e, fieldToUpdate) => {
     dispatchAchievementInfo({

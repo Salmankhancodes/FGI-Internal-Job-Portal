@@ -4,7 +4,6 @@ import { updateExperienceInfo } from '../../actions/experience-info'
 
 function Experience(props) {
   const { experienceInfo, dispatchExperienceInfo } = props
-  console.log(experienceInfo)
 
   const handleUpdateExperienceInfo = (e, fieldToUpdate) => {
     dispatchExperienceInfo({

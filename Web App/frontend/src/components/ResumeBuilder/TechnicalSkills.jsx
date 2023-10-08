@@ -4,10 +4,8 @@ import { updateTechnicalSkills } from '../../actions/technical-skills-info'
 
 function TechnicalSkills(props) {
   const { technicalSkillsInfo, dispatchTechnicalSkills } = props
-  console.log(technicalSkillsInfo)
 
   const handleUpdateTechnicalSkills = (e, fieldToUpdate) => {
-    console.log(e.target.value)
     dispatchTechnicalSkills({
       ...technicalSkillsInfo,
       [fieldToUpdate]: e.target.value,

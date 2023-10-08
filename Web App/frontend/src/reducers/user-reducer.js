@@ -20,7 +20,6 @@ const userReducer = (state = initialState, action) => {
         loggedIn: true,
       }
     case 'USER_LOGIN_FAILED':
-      console.log(action.payload.code)
       return {
         user: {},
         loading: false,
