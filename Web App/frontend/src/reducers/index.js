@@ -5,6 +5,7 @@ import experienceInfo from './experience-info-reducer'
 import achievementInfo from './achievement-info-reducer'
 import technicalSkillsInfo from './technical-skills-info-reducer'
 import projectsInfo from './projects-info-reducer'
+import userReducer from './user-reducer'
 
 const rootReducer = combineReducers({
   contactInfo,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   achievementInfo,
   technicalSkillsInfo,
   projectsInfo,
+  user: userReducer,
 })
 
 export default rootReducer

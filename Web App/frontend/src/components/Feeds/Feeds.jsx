@@ -31,7 +31,6 @@ function Feeds() {
       setCurrentPage(1)
     }
     const response = await axios.get(targetURL)
-    console.log(response)
     setJobData(response.data.results)
     setResultCount(response.data.count)
     setLoading(false)

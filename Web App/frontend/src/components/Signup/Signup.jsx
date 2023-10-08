@@ -1,18 +1,42 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Signup.css'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { auth } from '../../firebase'
 
 const Signup = () => {
-  const [phoneNumber, setPhoneNumber] = React.useState()
+  const navigate = useNavigate()
   const [name, setName] = React.useState()
   const [email, setEmail] = React.useState(null)
   const [password, setPassword] = React.useState()
+  const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState(null)
+
+  const handleSignup = async (e) => {
+    e.preventDefault()
+    try {
+      setError(null)
+      setLoading(true)
+      const newUser = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      await updateProfile(newUser.user, { displayName: name })
+      navigate('/login')
+      setLoading(false)
+    } catch (error) {
+      setError(error.code)
+      setLoading(false)
+    }
+  }
 
   return (
     <>
       <div className='signupPage'>
         <div className='signupformBox'>
           <h1 className='signupHeading'>Sign Up</h1>
+          <span>{error}</span>
           <form className='signupformContainer '>
             <input
               className='inputName inputformfield'
@@ -38,17 +62,13 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-
-            <input
-              className='inputPhone inputformfield'
-              type='number'
-              placeholder='Phone number'
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            <br />
-            <button className='submitButton' type='submit'>
-              Signup
+            <button
+              className='submitButton'
+              onClick={handleSignup}
+              type='submit'
+              disabled={loading}
+            >
+              {loading ? 'Creating...' : 'Signup'}
             </button>
           </form>
           <p className='existingAccMsg'>

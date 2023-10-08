@@ -67,7 +67,15 @@
   background-color: #eee31e;
   color: black;
 }
-
+.submitButton:disabled {
+  background-color: #f3efaa;
+  color: rgb(78, 77, 77);
+  cursor: not-allowed;
+}
+.errorMsg {
+  font-weight: bold;
+  color: red;
+}
 .newAccMsg {
   margin-top: 20px;
   font-size: 16px;
