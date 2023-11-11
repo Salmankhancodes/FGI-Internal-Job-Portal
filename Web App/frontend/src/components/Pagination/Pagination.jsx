@@ -11,7 +11,9 @@ const Pagination = ({ currentPage, resultCount, setCurrentPage }) => {
       >
         Prev
       </button>
-      <p className='page-number'>Page {currentPage}</p>
+      <b>
+        <p className='page-number'>Page {currentPage}</p>
+      </b>
       <button
         className='paginate-button'
         disabled={resultCount <= currentPage * 10}

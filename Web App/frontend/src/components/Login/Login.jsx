@@ -4,22 +4,26 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import './Login.css'
 import { auth } from '../../firebase'
 import { connect } from 'react-redux'
-import { loginUserFailed, loginUserSuccess } from '../../actions/user'
+import { loginUserSuccess } from '../../actions/user'
+import { generateErrorMessage } from '../utils'
 
-const Login = ({ successLoginDispatch, loginError, failedLoginDispatch }) => {
+const Login = ({ successLoginDispatch }) => {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
+      setError(null)
       setLoading(true)
       const user = await signInWithEmailAndPassword(auth, email, password)
       successLoginDispatch(user)
       setLoading(false)
     } catch (error) {
-      failedLoginDispatch(error)
       setLoading(false)
+      setError(generateErrorMessage(error.code))
     }
   }
 
@@ -28,7 +32,7 @@ const Login = ({ successLoginDispatch, loginError, failedLoginDispatch }) => {
       <div className='loginPage'>
         <div className='formBox'>
           <h1 className='loginHeading'>Login</h1>
-          <span className='errorMsg'>{loginError}</span>
+          <span className='errorMsg'>{error}</span>
           <form className='formContainer'>
             <input
               className='inputName'
@@ -67,7 +71,7 @@ const Login = ({ successLoginDispatch, loginError, failedLoginDispatch }) => {
               Signup
             </Link>
           </p>
-        </div>
+        </div>{' '}
       </div>
     </>
   )
@@ -77,6 +81,5 @@ export default connect(
   ({ user }) => ({ loginError: user.error }),
   (dispatch) => ({
     successLoginDispatch: (opts) => dispatch(loginUserSuccess(opts)),
-    failedLoginDispatch: (opts) => dispatch(loginUserFailed(opts)),
   })
 )(Login)

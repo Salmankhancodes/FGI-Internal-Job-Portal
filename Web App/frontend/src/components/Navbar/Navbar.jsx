@@ -15,42 +15,42 @@ function Navbar({ user }) {
   return (
     <nav>
       <div className='navbar'>
-        <div className='navLeft'>
+        <div>
           <Link to='/'>
             <img className='navLogo' src={logo} alt='' />
           </Link>
         </div>
-        <div className='navRight'>
+        <div className='navMenu'>
           {user.loggedIn ? (
             <>
               <Link to='/'>
-                <button>Home</button>
+                <span>Home</span>
               </Link>
               <Link to='/search'>
-                <button>Search Jobs</button>
+                <span>Search Jobs</span>
               </Link>
               <Link to='/resumebuilder'>
-                <button>Build Resume</button>
+                <span>Build Resume</span>
               </Link>
-              <p className='userNav'>
-                <button>
+              <p>
+                <span>
                   <i
                     onClick={(e) => {
                       userNav()
                     }}
                     className='fas fa-user-circle'
                   ></i>
-                </button>
+                </span>
                 <AccountMenu opt={opt} />
               </p>
             </>
           ) : (
             <>
               <Link to='/signup'>
-                <button>Sign Up</button>
+                <span>Sign Up</span>
               </Link>
               <Link to='/login'>
-                <button>Login</button>
+                <span>Login</span>
               </Link>
             </>
           )}

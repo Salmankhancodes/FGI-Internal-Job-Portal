@@ -27,8 +27,8 @@ button {
   background-color: white;
   margin: 2rem;
   height: auto;
-  min-height: 169px;
-  width: 736px;
+  min-height: 190px;
+  width: 1000px;
   left: 300px;
   top: 350px;
   border-radius: 18px;
@@ -95,7 +95,6 @@ button {
 }
 
 .applyButton {
-  /* margin-left: ; */
   width: 6rem;
   height: 2rem;
   background-color: #15b81c;

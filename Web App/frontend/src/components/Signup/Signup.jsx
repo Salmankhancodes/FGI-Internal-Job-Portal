@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Signup.css'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../../firebase'
+import { generateErrorMessage } from '../utils'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ const Signup = () => {
       navigate('/login')
       setLoading(false)
     } catch (error) {
-      setError(error.code)
+      setError(generateErrorMessage(error.code))
       setLoading(false)
     }
   }
@@ -36,7 +37,7 @@ const Signup = () => {
       <div className='signupPage'>
         <div className='signupformBox'>
           <h1 className='signupHeading'>Sign Up</h1>
-          <span>{error}</span>
+          <span className='errorMsg'>{error}</span>
           <form className='signupformContainer '>
             <input
               className='inputName inputformfield'
