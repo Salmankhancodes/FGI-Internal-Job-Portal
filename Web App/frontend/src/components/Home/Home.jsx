@@ -8,7 +8,8 @@ function Home() {
   const navigate = useNavigate()
   return (
     <div className='homeFeeds'>
-      <div className='homeLeft'>-
+      <div className='homeLeft'>
+        -
         <img src={logo} alt='' />
         <div className='homeHeading'>
           <h1>FGI-Internal Job Portal</h1>

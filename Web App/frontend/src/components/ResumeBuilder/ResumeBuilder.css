@@ -59,12 +59,9 @@
 }
 
 .formbody {
-  /* position: absolute;
-  top: 16rem; */
   margin-left: 3rem;
   margin-top: 2rem;
-  /* left: 2rem; */
-  /* background-color: blue; */
+
   width: 600px;
 }
 
@@ -82,10 +79,6 @@
   font-size: 14px;
 }
 
-.footer {
-  /* position: absolute;
-  top: 11rem; */
-}
 .footer button {
   width: 130px;
   height: 30px;
@@ -133,70 +126,6 @@ span {
   margin-right: 0.6rem;
 }
 
-/* 
-.contact_info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  word-break: break-all;
-  font-size: 14px;
-}
-
-.section_header {
-  font-weight: 700;
-  font-size: 17px;
-}
-.primary_row {
-  margin-top: 0.5rem;
-  margin-bottom: 0.1rem;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  font-size: 15px;
-  word-break: break-all;
-}
-.secondary_row {
-  font-size: 13px;
-  font-style: italic;
-  word-break: break-all;
-}
-.section {
-  margin-top: 1rem;
-}
-.bulltets {
-  margin-top: 0.5rem;
-  margin-left: 1.5rem;
-}
-span {
-  margin-right: 0.6rem;
-} */
-
-/* @media print {
-  body * {
-    visibility: hidden;
-  }
-  .resume_page * {
-    visibility: visible;
-  }
-  .resume_page {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .section_header {
-    font-size: 17px;
-  }
-
-  .primary_row {
-    font-size: 15px;
-  }
-  .secondary_row {
-    font-size: 13px;
-  }
-} */
-
 @media print {
   body * {
     visibility: hidden;
@@ -221,16 +150,29 @@ span {
   }
 }
 
-/* .college_name {
-    display: flex;
-    justify-content: space-between;
-  } */
-/* .college_info {
-    display: flex;
-    justify-content: space-between;
+/* Small screens (mobile) */
+@media only screen and (max-width: 576px) {
+  /* Mobile styles go here */
+  .resume_wrapper {
+    flex-direction: column;
+    width: 100%;
   }
-  
-  .school_info {
-    display: flex;
-    justify-content: space-between;
-  } */
+  .resume_form {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* Medium screens (tablet) */
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  /* Tablet styles go here */
+  .resume_wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* Large screens (desktop) */
+@media only screen and (min-width: 993px) {
+  /* Desktop styles go here */
+}

@@ -55,3 +55,11 @@
 .inputformfield {
   padding-left: 1rem;
 }
+
+/* Small screens (mobile) */
+@media only screen and (max-width: 576px) {
+  /* Mobile styles go here */
+  .navMenu a {
+    font-size: 15px;
+  }
+}

@@ -80,3 +80,22 @@
   margin-top: 20px;
   font-size: 16px;
 }
+
+/* Small screens (mobile) */
+@media only screen and (max-width: 576px) {
+  /* Mobile styles go here */
+  .formBox {
+    margin-top: 40px;
+    width: 300px;
+  }
+}
+
+/* Medium screens (tablet) */
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  /* Tablet styles go here */
+}
+
+/* Large screens (desktop) */
+@media only screen and (min-width: 993px) {
+  /* Desktop styles go here */
+}
